@@ -27,6 +27,9 @@ namespace lesson3
                 new GiftCard(100, Currency.EUR),
             };
 
+                Console.WriteLine(items[2].Description);        //test von Interface 
+                Console.WriteLine(items[2].GetPrice(Currency.EUR));
+
                 var currency = Currency.EUR;
                 foreach (var x in items)
                 {
@@ -41,7 +44,7 @@ namespace lesson3
 
 
             }
-            Console.WriteLine("Fertig");
+            
             //a.title = "ABC";        // nicht möglich wenn title private .... kann nur in Class Book geändert werden
 
         }
