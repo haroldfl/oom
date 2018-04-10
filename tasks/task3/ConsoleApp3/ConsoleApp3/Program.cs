@@ -15,25 +15,18 @@ namespace lesson3
         {
             try
             {
-                var items = new IItem[]
+                var items = new Person[]
             {
-                new Book("Real-Time Rendering", 123,Currency.EUR,"blabla"),
-                new Book("Real-Time", 135,Currency.USD,"blabla"),
-                new Book("Time Rendering", 130,Currency.USD,"blabla"),
-                new Book("Time ring", 10,Currency.EUR,"blabla"),
-                new Book("Rendering", 12,Currency.EUR,"blabla"),
-                new GiftCard(50, Currency.EUR),
-                new GiftCard(10, Currency.USD),
-                new GiftCard(100, Currency.EUR),
+                new Family("Huber","Kirchenstrasse",12,false),
+                new Family("Meier", "Schulstrasse", 15, true),
+                new Customer("Wurst",1234,2,"Schulstrasse"),
+                new Customer("Schinken",3421,10,"Tischlerweg"),
             };
-
-                Console.WriteLine(items[2].Description);        //test von Interface 
-                Console.WriteLine(items[2].GetPrice(Currency.EUR));
-
-                var currency = Currency.EUR;
+              
+                
                 foreach (var x in items)
                 {
-                    Console.WriteLine($"{x.Description.Truncate(50),-50} {x.GetPrice(currency),8:0.00} {currency}");
+                    Console.WriteLine($"{x.Surname} {x.Address}");
                 }
             }
 
@@ -45,7 +38,7 @@ namespace lesson3
 
             }
             
-            //a.title = "ABC";        // nicht möglich wenn title private .... kann nur in Class Book geändert werden
+            
 
         }
     }

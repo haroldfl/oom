@@ -5,61 +5,44 @@ using System.Text;
 
 namespace lesson3
 {
-    public enum Currency
+
+
+    public class Customer : Person
     {
-        EUR,
-        USD
-    }
+        private string surname;
+        private string adrress;
+        private int customerID;
+        private int visit;
+        public Customer(string n, int id, int v, string adr)
+        {
+            surname = n;
+            customerID = id;
+            visit = v;
+            adrress = adr;
+        }
+        public string Surname => surname;
 
-    public class Book : IItem
-    {
-        private string title;           //Beste Implemetierung da keine Bugs möglich da nicht verändert durch Private Sichtbarkeit
-        private decimal price;           //Startet mit Private und implementiert public Konstruktor mit Regeln um keine Bugs zuzulassen
-        private Currency currency;      //Felder sind defaultmäßig Private weil ich wenn public diese nicht über funktionen überprüfen kann
-        private string description;
 
-        public decimal GetPrice(Currency currency) { return price; }
+        public int CustomerID { get; }
+        public int Visit { get; }
+        public void inc_visit() {
+            visit++;
+        }
 
-        public decimal Price
+        public string Address
         {
             get
             {
-                return price;
+                return adrress;
             }
             set
             {
-
-                if (value < 0) throw new Exception("Neg. Preis");
-                price = value;
-
-
+                if (String.Compare(adrress, "") == 0)
+                {
+                    throw new Exception("Adress must be filled in!!");
+                }
+                adrress = value;
             }
-
-
-
-        }
-
-
-        public string GetTitle() { return title; }
-        public void SetPrice(decimal newPrice)
-        {
-            if (newPrice < 0) throw new Exception("Neg. Preis");
-            price = newPrice;
-        }
-
-        public string Description { get { return description; } }
-
-
-        public Book(string t, decimal p, Currency c, string d)     //Konstruktor heißt so wie Klasse und erzeugt Element mit Parameter t p und currency C
-        {
-            if (t == null || t == "") throw new Exception("Leerer Titel.");         //Falscher Titel Exception wird ausgegeben
-                                                                                    //throw unterbricht Programmablauf und springt aus Funktion
-            SetPrice(p);
-
-            title = t;
-            price = p;
-            currency = c;
-            description = d;
         }
     }
 }
