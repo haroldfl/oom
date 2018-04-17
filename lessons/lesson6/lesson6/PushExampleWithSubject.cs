@@ -19,17 +19,19 @@ namespace lesson6
             var source = new Subject<int>();
 
             source
-                .Sample(TimeSpan.FromSeconds(1.0))
+                .Sample(TimeSpan.FromSeconds(0.5))
                 .Subscribe(x => Console.WriteLine($"received {x}"))
                 ;
 
             var t = new Thread(() =>
             {
                 var i = 0;
+                
                 while (true)
                 {
                     Thread.Sleep(250);
-                    source.OnNext(i);
+
+                    source.Equals(i);
                     Console.WriteLine($"sent {i}");
                     i++;
                 }
